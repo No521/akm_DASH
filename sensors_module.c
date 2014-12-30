@@ -93,7 +93,7 @@ static int sensors_module_open(const struct hw_module_t* module, const char* id,
 
 	memset(dev, 0, sizeof(*dev));
 	dev->common.tag = HARDWARE_DEVICE_TAG;
-	dev->common.version = 0;
+	dev->common.version = SENSORS_DEVICE_API_VERSION_0_1;
 	dev->common.module = (struct hw_module_t*)module;
 	dev->common.close = sensors_module_close;
 	dev->activate = sensors_module_activate;
