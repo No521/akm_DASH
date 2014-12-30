@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "DASH"
+#define LOG_TAG "DASH - sysfs"
 
 #include <stdio.h>
 #include <sys/types.h>

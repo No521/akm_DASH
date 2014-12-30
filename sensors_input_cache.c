@@ -1,3 +1,5 @@
+#define LOG_TAG "DASH - input_cache"
+
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/ioctl.h>
