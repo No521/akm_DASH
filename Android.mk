@@ -40,7 +40,11 @@ LOCAL_C_INCLUDES += $(yes-c-includes)
 LOCAL_STATIC_LIBRARIES += $(yes-static-libs)
 LOCAL_SHARED_LIBRARIES += $(yes-shared-libs)
 
+ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),)
 LOCAL_MODULE := sensors.default
+else
+LOCAL_MODULE := sensors.$(TARGET_BOOTLOADER_BOARD_NAME)
+endif
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_SHARED_LIBRARY)
 
