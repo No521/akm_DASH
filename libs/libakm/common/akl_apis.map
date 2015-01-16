@@ -1,0 +1,4 @@
+{
+    global: AKL_*;
+    local: *;
+};
