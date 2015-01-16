@@ -28,6 +28,38 @@ endif
 #
 # Compasses
 #
+$(SOMC_CFG_SENSORS_COMPASS_AK09911_RAW)-var-compass-ak0991xna_raw = yes
+$(SOMC_CFG_SENSORS_COMPASS_AK09911_RAW)-cflags += -DAK0991X \
+						-DAKM_CHIP_NAME="\"AK09911\"" \
+						-DAKM_CHIP_MAXRANGE=4900 \
+						-DAKM_CHIP_RESOLUTION=0.06 \
+						-DAKM_CHIP_POWER=0.24
+
+$(SOMC_CFG_SENSORS_COMPASS_AK09912_RAW)-var-compass-ak0991xna_raw = yes
+$(SOMC_CFG_SENSORS_COMPASS_AK09912_RAW)-cflags += -DAK0991X \
+						-DAKM_CHIP_NAME="\"AK09912\"" \
+						-DAKM_CHIP_MAXRANGE=4900 \
+						-DAKM_CHIP_RESOLUTION=0.06 \
+						-DAKM_CHIP_POWER=0.1
+
+$(SOMC_CFG_SENSORS_COMPASS_AK09911)-var-compass-ak0991xna = yes
+$(SOMC_CFG_SENSORS_COMPASS_AK09911)-cflags += -DAK0991X \
+						-DAKM_CHIP_NAME="\"AK09911\"" \
+						-DAKM_CHIP_MAXRANGE=4900 \
+						-DAKM_CHIP_RESOLUTION=0.06 \
+						-DAKM_CHIP_POWER=0.24
+$(SOMC_CFG_SENSORS_COMPASS_AK09911)-c-includes += $(DASH_ROOT)/libs/ak0991x
+$(SOMC_CFG_SENSORS_COMPASS_AK09911)-shared-libs += libsensors_ak09911
+
+$(SOMC_CFG_SENSORS_COMPASS_AK09912)-var-compass-ak0991xna = yes
+$(SOMC_CFG_SENSORS_COMPASS_AK09912)-cflags += -DAK0991X \
+						-DAKM_CHIP_NAME="\"AK09912\"" \
+						-DAKM_CHIP_MAXRANGE=4900 \
+						-DAKM_CHIP_RESOLUTION=0.06 \
+						-DAKM_CHIP_POWER=0.1
+$(SOMC_CFG_SENSORS_COMPASS_AK09912)-c-includes += $(DASH_ROOT)/libs/ak0991x
+$(SOMC_CFG_SENSORS_COMPASS_AK09912)-shared-libs += libsensors_ak09912
+
 $(SOMC_CFG_SENSORS_COMPASS_AK8963)-var-compass-ak896xna = yes
 $(SOMC_CFG_SENSORS_COMPASS_AK8963)-cflags += -DAK8963 \
 					     -DAKM_CHIP_NAME="\"AK8963\"" \
@@ -63,6 +95,8 @@ $(SOMC_CFG_SENSORS_COMPASS_AK8975)-cflags += -DAK8975 \
 $(yes-var-compass-ak897x)-files   += ak897x.c
 $(yes-var-compass-ak897xna)-files += ak897xna.c wrappers/ak897xna_sensors.c
 $(yes-var-compass-ak896xna)-files += ak896xna.c wrappers/ak896xna_sensors.c
+$(yes-var-compass-ak0991xna)-files += ak0991xna.c wrappers/ak0991xna_sensors.c
+$(yes-var-compass-ak0991xna_raw)-files += ak0991xna_raw.c
 
 #
 # Light sensors
@@ -153,6 +187,12 @@ $(yes-var-compass-lsm303dlh)-static-libs += libLSM303DLH
 $(yes-var-compass-lsm303dlh)-cflags += -I$(LOCAL_PATH)/libs/lsm303dlh \
 				       -DLSM303DLHC
 endif
+
+#
+# AKM sensor solution
+#
+$(SOMC_CFG_LIBAKM_LIBOSS)-files += wrappers/akmoss_sensors.c
+
 #
 # Shared files
 #
